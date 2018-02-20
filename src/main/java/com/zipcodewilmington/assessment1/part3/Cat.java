@@ -3,7 +3,7 @@ package com.zipcodewilmington.assessment1.part3;
 /**
  * Created by leon on 2/16/18.
  */
-public class Cat extends Pet {
+public class Cat extends Pet implements Comparable<Pet>{
 
     private String name;
     private Integer age;
@@ -61,4 +61,13 @@ public class Cat extends Pet {
     }
 
 
+    @Override
+    public int compareTo(Pet pet) {
+        Integer age1 = getAge();
+        Integer age2 = pet.getAge();
+
+        if (age1 > age2) {
+            return -1;
+        } else return 1;
+    }
 }
