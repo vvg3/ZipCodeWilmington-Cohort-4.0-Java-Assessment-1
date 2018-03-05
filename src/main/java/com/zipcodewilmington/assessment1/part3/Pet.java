@@ -5,16 +5,19 @@ import java.util.HashMap;
 /**
  * Created by leon on 2/16/18.
  */
-public abstract class Pet implements Animal {
-    private String name;
-    private int age;
-    private PetOwner petOwner;
+public abstract class Pet implements Animal, Comparable<Pet> {
+
+    String name;
+    Integer age;
+    PetOwner owner;
 
     /**
      * nullary constructor
      * by default, pet has age of 0; name of "";
      */
     public Pet() {
+        this.name = "";
+        this.age = 0;
     }
 
     /**
@@ -22,6 +25,7 @@ public abstract class Pet implements Animal {
      */
     public Pet(String name) {
         this.name = name;
+        this.age = 0;
     }
 
 
@@ -30,6 +34,7 @@ public abstract class Pet implements Animal {
      */
     public Pet(int age) {
         this.age = age;
+        this.name = "";
     }
 
     /**
@@ -39,20 +44,21 @@ public abstract class Pet implements Animal {
     public Pet(String name, int age) {
         this.name = name;
         this.age = age;
+
     }
 
     /**
      * @return name of this pet
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
      * @return age of this pet
      */
     public Integer getAge() {
-        return age;
+        return this.age;
     }
 
     /**
@@ -60,9 +66,8 @@ public abstract class Pet implements Animal {
      * ensure this instance of `Pet` is added to the owner's composite `pets` list
      */
     public void setOwner(PetOwner newPetOwner) {
+        this.owner = newPetOwner;
 
-        this.petOwner = newPetOwner;
-        newPetOwner.addPet(this);
     }
 
     /**
@@ -70,6 +75,30 @@ public abstract class Pet implements Animal {
      */
     public PetOwner getOwner() {
 
-        return petOwner;
+        return this.owner;
     }
+
+    @Override
+    public int compareTo(Pet anotherPet) {
+
+        return this.getAge().compareTo(anotherPet.getAge());
+//
+//        String otherPetName = anotherPet.getName();
+//        int result = -(otherPetName.compareTo(name));
+//        boolean sameName = (result == 0);
+//
+//        if (sameName) {
+//            Class otherPetClass = anotherPet.getClass();
+//            String otherPetClassName = otherPetClass.getSimpleName();
+//
+//            Class thisPetClass = this.getClass();
+//            String thisPetClassName = thisPetClass.getSimpleName();
+//
+//            result = -(otherPetClassName.compareTo(thisPetClassName));
+//        }
+//
+//        return result;
+    }
+
+
 }

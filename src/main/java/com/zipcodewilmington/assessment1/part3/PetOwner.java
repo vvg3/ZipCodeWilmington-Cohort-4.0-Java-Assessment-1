@@ -2,14 +2,15 @@ package com.zipcodewilmington.assessment1.part3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Collections;
 
 /**
  * Created by leon on 2/16/18.
  */
 public class PetOwner {
-    private String name;
-    Pet[] petArray;
+
+    String name;
+    ArrayList<Pet> ownersPets;
 
     /**
      * @param name name of the owner of the Pet
@@ -17,10 +18,9 @@ public class PetOwner {
      */
     public PetOwner(String name, Pet... pets) {
         this.name = name;
-        if (pets == null) {
-            this.petArray = new Pet[0];
-        } else {
-            this.petArray = pets;
+        this.ownersPets = new ArrayList<>();
+        if (pets != null) {
+            this.ownersPets.addAll(Arrays.asList(pets));
         }
     }
 
@@ -29,21 +29,16 @@ public class PetOwner {
      */
     public void addPet(Pet pet) {
 
+        this.ownersPets.add(pet);
 
-        Pet[] tempArray = new Pet[this.petArray.length + 1];
-        System.arraycopy(this.petArray, 0, tempArray, 0, this.petArray.length);
-        tempArray[tempArray.length - 1] = pet;
-        this.petArray = tempArray;
     }
 
     /**
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-        for (int i = 0; i < this.petArray.length; i++) {
-            if (petArray[i].equals(pet))
-                petArray[i] = null;
-        }
+
+        this.ownersPets.remove(pet);
 
     }
 
@@ -52,20 +47,19 @@ public class PetOwner {
      * @return true if I own this pet
      */
     public Boolean isOwnerOf(Pet pet) {
-        for (int i = 0; i < this.petArray.length; i++) {
-            if (petArray[i].equals(pet))
-                return true;
-        }
-        return false;
+
+        return ownersPets.contains(pet);
     }
 
     /**
      * @return the age of the Pet object whose age field is the lowest amongst all Pets in this class
      */
-    public Integer getYoungetPetAge() {
+    public Integer getYoungestPetAge() {
+
         sortPetsByAge();
 
-        return petArray[petArray.length - 1].getAge();
+        return 0;
+//        return ownersPets[0].getAge();
     }
 
 
@@ -73,9 +67,12 @@ public class PetOwner {
      * @return the age of the Pet object whose age field is the highest amongst all Pets in this class
      */
     public Integer getOldestPetAge() {
+
         sortPetsByAge();
 
-        return petArray[0].getAge();
+        return null;
+
+//        return ownersPets[ownersPets.length - 1].getAge();
     }
 
 
@@ -83,21 +80,14 @@ public class PetOwner {
      * @return the sum of ages of Pet objects stored in this class divided by the number of Pet object
      */
     public Float getAveragePetAge() {
-        Float totalPetAge = 0F;
-        int totalPets = petArray.length;
-
-        for (int i = 0; i < petArray.length; i++) {
-            totalPetAge += petArray[i].getAge();
-        }
-
-        return totalPetAge / totalPets;
+        return null;
     }
 
     /**
      * @return the number of Pet objects stored in this class
      */
     public Integer getNumberOfPets() {
-        return petArray.length;
+        return ownersPets.size();
     }
 
     /**
@@ -105,7 +95,7 @@ public class PetOwner {
      */
     public String getName() {
 
-        return name;
+        return this.name;
     }
 
     /**
@@ -113,13 +103,21 @@ public class PetOwner {
      */
     public Pet[] getPets() {
 
+        Pet[] petArray = new Pet[ownersPets.size()];
+
+        for (int i = 0; i < ownersPets.size(); i++) {
+            petArray[i] = ownersPets.get(i);
+        }
+
         return petArray;
     }
 
     public Pet[] sortPetsByAge() {
-        Arrays.sort(petArray);
 
-        return petArray;
+//        Arrays.sort(ownersPets);
+
+        return null;
+//        return ownersPets;
     }
 
 

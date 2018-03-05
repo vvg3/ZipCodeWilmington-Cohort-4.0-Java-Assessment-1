@@ -14,13 +14,18 @@ public class RockPaperSissorsEvaluator {
      */
     public String getWinningMove(String handSign) {
 
-        if (handSign.equals("rock")) {
-            return "paper";
-        } else if (handSign.equals("paper")){
-            return "scissors";
-        } else if (handSign.equals("scissors")) {
-            return "rock";
-        } else
+        switch (handSign) {
+
+            case "rock":
+                return "paper";
+
+            case "paper":
+                return "scissors";
+
+            case "scissors":
+                return "rock";
+        }
+
         return null;
     }
 
@@ -30,14 +35,20 @@ public class RockPaperSissorsEvaluator {
      */
     public String getLosingMove(String handSign) {
 
-        if (handSign.equals("rock")) {
-            return "scissors";
-        } else if (handSign.equals("paper")){
-            return "rock";
-        } else if (handSign.equals("scissors")) {
-            return "paper";
-        } else
-            return null;    }
+        switch (handSign) {
+
+            case "rock":
+                return "scissors";
+
+            case "paper":
+                return "rock";
+
+            case "scissors":
+                return "paper";
+        }
+
+        return null;
+    }
 
     /**
      * @param handSignOfPlayer1 a string representative of a hand sign of a player
@@ -46,32 +57,12 @@ public class RockPaperSissorsEvaluator {
      */
     public String getWinner(String handSignOfPlayer1, String handSignOfPlayer2) {
 
-        switch (handSignOfPlayer1) {
-            case "rock":
-                if (handSignOfPlayer2.equals("scissors")) {
-                    return handSignOfPlayer1;
-                } else if (handSignOfPlayer2.equals("paper")) {
-                    return handSignOfPlayer2;
-                } else return "tie";
-                //break;
-
-            case "paper":
-                if (handSignOfPlayer2.equals("scissors")) {
-                    return handSignOfPlayer2;
-                } else if (handSignOfPlayer2.equals("rock")) {
-                    return handSignOfPlayer1;
-                } else return "tie";
-                //break;
-
-            case "scissors":
-                if (handSignOfPlayer2.equals("paper")) {
-                    return handSignOfPlayer1;
-                } else if (handSignOfPlayer2.equals("rock")) {
-                    return handSignOfPlayer2;
-                } else return "tie";
-                //break;
-
+        if (getWinningMove(handSignOfPlayer1).equals(handSignOfPlayer2)) {
+            return handSignOfPlayer2;
+        } else if (getWinningMove(handSignOfPlayer2).equals(handSignOfPlayer1)) {
+            return handSignOfPlayer1;
+        } else {
+            return "tie";
         }
-        return "invalid entry";
     }
 }

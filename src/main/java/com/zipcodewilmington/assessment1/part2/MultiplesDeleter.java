@@ -19,17 +19,18 @@ public class MultiplesDeleter {
             }
         }
 
-        Integer[] cleanArray = new Integer[ints.length - countOfEvens];
-        int cleanArrayIndex = 0;
+        Integer[] oddsArray = new Integer[ints.length - countOfEvens];
 
-        for (int j = 0; j < ints.length; j++) {
-            if (ints[j] % 2 != 0) {
-                cleanArray[cleanArrayIndex] = ints[j];
-                cleanArrayIndex++;
+        int secondIterator = 0;
+
+        for (int i = 0; i < ints.length; i++) {
+            if (ints[i] % 2 != 0) {
+                oddsArray[secondIterator] = ints[i];
+                secondIterator++;
             }
         }
 
-        return cleanArray;
+        return oddsArray;
     }
 
     /**
@@ -39,25 +40,27 @@ public class MultiplesDeleter {
      */
     public Integer[] deleteOdds(Integer[] ints) {
 
-        int countOfOdds = 0;
+        int countOfEvens = 0;
 
         for (int i = 0; i < ints.length; i++) {
             if (ints[i] % 2 != 0) {
-                countOfOdds++;
+                countOfEvens++;
             }
         }
 
-        Integer[] cleanArray = new Integer[ints.length - countOfOdds];
-        int cleanArrayIndex = 0;
+        Integer[] evensArray = new Integer[ints.length - countOfEvens];
 
-        for (int j = 0; j < ints.length; j++) {
-            if (ints[j] % 2 == 0) {
-                cleanArray[cleanArrayIndex] = ints[j];
-                cleanArrayIndex++;
+        int secondIterator = 0;
+
+        for (int i = 0; i < ints.length; i++) {
+            if (ints[i] % 2 == 0) {
+                evensArray[secondIterator] = ints[i];
+                secondIterator++;
             }
         }
 
-        return cleanArray;
+
+        return evensArray;
     }
 
     /**
@@ -67,25 +70,26 @@ public class MultiplesDeleter {
      */
     public Integer[] deleteMultiplesOf3(Integer[] ints) {
 
-        int countOfMultiplesOfThree = 0;
+        int count = 0;
 
         for (int i = 0; i < ints.length; i++) {
             if (ints[i] % 3 == 0) {
-                countOfMultiplesOfThree++;
+                count++;
             }
         }
 
-        Integer[] cleanArray = new Integer[ints.length - countOfMultiplesOfThree];
-        int cleanArrayIndex = 0;
+        Integer[] newArray = new Integer[ints.length - count];
 
-        for (int j = 0; j < ints.length; j++) {
-            if (ints[j] % 3 != 0) {
-                cleanArray[cleanArrayIndex] = ints[j];
-                cleanArrayIndex++;
+        int iterator = 0;
+
+        for (int i = 0; i < ints.length; i++) {
+            if (ints[i] % 3 != 0) {
+                newArray[iterator] = ints[i];
+                iterator++;
             }
         }
 
-        return cleanArray;
+        return newArray;
     }
 
     /**
@@ -96,25 +100,27 @@ public class MultiplesDeleter {
      */
     public Integer[] deleteMultiplesOfN(Integer[] ints, int multiple) {
 
-        int countOfMultiplesOfN = 0;
+        int count = 0;
 
         for (int i = 0; i < ints.length; i++) {
             if (ints[i] % multiple == 0) {
-                countOfMultiplesOfN++;
+                count++;
             }
         }
 
-        Integer[] cleanArray = new Integer[ints.length - countOfMultiplesOfN];
-        int cleanArrayIndex = 0;
+        Integer[] newArray = new Integer[ints.length - count];
 
-        for (int j = 0; j < ints.length; j++) {
-            if (ints[j] % multiple != 0) {
-                cleanArray[cleanArrayIndex] = ints[j];
-                cleanArrayIndex++;
+        int iterator = 0;
+
+        for (int i = 0; i < ints.length; i++) {
+            if (ints[i] % multiple != 0) {
+                newArray[iterator] = ints[i];
+                iterator++;
             }
         }
 
-        return cleanArray;    }
+        return newArray;
+    }
 
 
 }

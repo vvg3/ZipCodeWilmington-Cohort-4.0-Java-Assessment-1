@@ -3,10 +3,8 @@ package com.zipcodewilmington.assessment1.part3;
 /**
  * Created by leon on 2/16/18.
  */
-public class Cat extends Pet implements Comparable<Pet>{
+public class Cat extends Pet {
 
-    private String name;
-    private Integer age;
     /**
      * @param name name of this Cat
      * @param age age of this Cat
@@ -21,7 +19,7 @@ public class Cat extends Pet implements Comparable<Pet>{
      */
     public Cat(Integer age) {
         this.age = age;
-        this.name = "Cat name";
+        this.name = "";
     }
 
     /**
@@ -30,7 +28,6 @@ public class Cat extends Pet implements Comparable<Pet>{
     public Cat(String name) {
         this.name = name;
         this.age = 0;
-
     }
 
     /**
@@ -40,7 +37,7 @@ public class Cat extends Pet implements Comparable<Pet>{
      * age is 0
      */
     public Cat() {
-        this.name = "Cat name";
+        this.name = "";
         this.age = 0;
     }
 
@@ -49,25 +46,18 @@ public class Cat extends Pet implements Comparable<Pet>{
      */
     public String speak() {
 
-        return "Meow";
+        return "meow";
+
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public Integer getAge() {
-        return age;
+        return this.age;
     }
 
 
-    @Override
-    public int compareTo(Pet pet) {
-        Integer age1 = getAge();
-        Integer age2 = pet.getAge();
 
-        if (age1 > age2) {
-            return -1;
-        } else return 1;
-    }
 }
